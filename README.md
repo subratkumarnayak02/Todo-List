@@ -1,8 +1,8 @@
-# React + Vite
+# Todo List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+This Todo list helps you add your tasks to the list and as it is designed to add tasks from multiple users, each task has a user ID which is assigned while adding the task and it also has a unique ID. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+It also provide Search option to search for tasks by a particular person using their user ID. 
+
+Each task can be updated and deleted as per user.
