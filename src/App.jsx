@@ -4,6 +4,8 @@ import CreateArea from "./components/CreateArea";
 import Footer from "./components/Footer";
 import Notes from "./components/Notes";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
@@ -14,6 +16,8 @@ const App = () => {
     title: "",
     completed: false,
   });
+
+  const [theme, setTheme] = useState("light");
 
   const searchNote = async (searchId) => {
     try {
@@ -39,6 +43,7 @@ const App = () => {
       if (window.confirm("Are you sure you want to delete this todo?")) {
         await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
         setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id));
+        alert(`Post Id ${id} deleted successfully.`);
       } else {
         return;
       }
@@ -87,7 +92,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App light-dark-mode" data-theme={theme}>
       <Header onSearch={searchNote} />
       <CreateArea
         onAdd={addNote}
@@ -118,6 +123,14 @@ const App = () => {
           <h2>No todos found</h2>
         </div>
       )}
+      <div className="theme-toggle-container">
+        <button
+          className="theme-toggle"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        >
+          <FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
+        </button>
+      </div>
       <Footer />
     </div>
   );
